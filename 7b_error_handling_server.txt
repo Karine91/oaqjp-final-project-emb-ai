@@ -8,15 +8,12 @@ app = Flask("Emotion Detector")
 def detect_emotion():
     text_input = request.args.get("textToAnalyze")
     res = emotion_detector(text_input)
-    if res["dominant_emotion"] is None:
-        return "Invalid text! Please try again!"
+    if res['dominant_emotion'] is None:
+        return 'Invalid text! Please try again!'
     emotions = {k: v for k, v in res.items() if k is not "dominant_emotion"}
     emotions_str = ", ".join([f'"{k}": {v}' for k, v in emotions.items()])
-    return (
-        f"For the given statement, the system response is {emotions_str}.",
-        f'The dominant emotion is {res["dominant_emotion"]}.',
-    )
-
+    return f'For the given statement, the system response is {emotions_str}. The dominant emotion is {res["dominant_emotion"]}.'
+   
 
 @app.route("/")
 def render_index():

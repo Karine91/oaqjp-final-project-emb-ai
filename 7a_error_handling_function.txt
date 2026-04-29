@@ -34,5 +34,5 @@ def emotion_detector(text_input):
             "fear": None,
             "joy": None,
             "sadness": None,
-            "dominant_emotion": None,
+            "dominant_emotion": None
         }
